@@ -1,0 +1,7 @@
+class AppImages {
+  static const String backgrounf_img = "images/background.jpg";
+  static const String logo_img = "images/delivery-man.png";
+  static const String burger_img = "images/burger.png";
+  static const String shawarma_img = "images/shawarma.png";
+  static const String icecream_img = "images/icecream.png";
+}
