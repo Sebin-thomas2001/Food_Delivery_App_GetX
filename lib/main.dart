@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_cart/modules/auth_module/controller/login_controller.dart';
 import 'package:shop_cart/modules/onboarding/controller/onboarding_controller.dart';
 import 'package:shop_cart/modules/onboarding/views/splash_screen.dart';
 
 void main() {
   Get.put(OnboardingController());
+  Get.put(LoginController());
   runApp(const MyApp());
 }
 
@@ -14,11 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
         home: const SplashScreen());

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_cart/common/buttons/app_primary_button.dart';
 import 'package:shop_cart/constants/app_images.dart';
 import 'package:shop_cart/modules/auth_module/views/login_view.dart';
 import 'package:shop_cart/modules/onboarding/controller/onboarding_controller.dart';
@@ -65,8 +66,9 @@ class _OnboardingView1State extends State<OnboardingView1> {
               ),
               Padding(
                 padding: const EdgeInsets.all(20),
-                child: InkWell(
-                  onTap: () {
+                child:  AppPrimaryButton(
+                  buttonText: 'Next',
+                  onTap: (){
                     int tempIndex = onboardingController.index.value;
 
                     if (tempIndex ==
@@ -77,23 +79,6 @@ class _OnboardingView1State extends State<OnboardingView1> {
                       onboardingController.index(tempIndex + 1);
                     }
                   },
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    width: size.width,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                            colors: [greenColor, lightgreenColor]),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: const Center(
-                      child: CustomText(
-                        text: "Next",
-                        lineSpacing: 1,
-                        fontFamily: 'Bold',
-                        fontsize: 20,
-                      ),
-                    ),
-                  ),
                 ),
               )
             ],
