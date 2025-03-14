@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:shop_cart/modules/kyc_module/views/create_bio_view.dart';
 
 class LoginController extends GetxController {
   RxBool ispasswordVisible = true.obs;
@@ -28,13 +29,17 @@ class LoginController extends GetxController {
       // Check if the account creation was successful
       if (credential.user != null) {
         log("User Created: ${credential.user!.uid}");
+        Get.off(CreateBioView());
       }
     } on FirebaseAuthException catch (e) {
       // Handle specific FirebaseAuthException codes
       if (e.code == 'weak-password') {
         log('The password provided is too weak.');
+        Get.snackbar("weak-password", 'Enter Strong Password.');
       } else if (e.code == 'email-already-in-use') {
         log('The account already exists for that email.');
+        Get.snackbar('email-already-in-use',
+            'The account already exists for that email.');
       } else if (e.code == 'invalid-email') {
         log('The email provided is not valid.');
       } else {

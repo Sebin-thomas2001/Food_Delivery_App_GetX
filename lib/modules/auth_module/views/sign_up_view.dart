@@ -246,20 +246,23 @@ class _SignUpViewState extends State<SignUpView> {
           height: 120,
           child: Column(
             children: [
-              AppPrimaryButton(
-                buttonText: "Create Account",
-                onTap: () {
-                  // create account function
-
-                  if (formKey.currentState!.validate()) {
-                    loginController.createAccount(
-                        email: emailController.text,
-                        password: passwordController.text,
-                        username: usernameController.text);
-                  } else {
-                    log("Fill All the Fields");
-                  }
-                },
+              Obx(()=>
+                AppPrimaryButton(
+                  isLoading: loginController.isLoading.isTrue,
+                  buttonText: "Create Account",
+                  onTap: () {
+                    // create account function
+                
+                    if (formKey.currentState!.validate()) {
+                      loginController.createAccount(
+                          email: emailController.text,
+                          password: passwordController.text,
+                          username: usernameController.text);
+                    } else {
+                      log("Fill All the Fields");
+                    }
+                  },
+                ),
               ),
               const SizedBox(
                 height: 3,
