@@ -6,11 +6,9 @@ import '../../constants/app_colors.dart';
 class AppPrimaryButton extends StatelessWidget {
   final String buttonText;
   Function()? onTap;
+  bool isLoading;
 
-   AppPrimaryButton({super.key, 
-  required this.buttonText,
-  this.onTap
-  });
+  AppPrimaryButton({super.key, required this.buttonText, this.onTap,this.isLoading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class AppPrimaryButton extends StatelessWidget {
                   const LinearGradient(colors: [greenColor, lightgreenColor]),
               borderRadius: BorderRadius.circular(20)),
           child: Center(
-            child: CustomText(
+            child: isLoading ? CircularProgressIndicator() : CustomText(
               text: buttonText,
               lineSpacing: 1,
               fontFamily: 'Bold',

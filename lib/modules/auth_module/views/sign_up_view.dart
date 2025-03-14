@@ -24,184 +24,219 @@ class _SignUpViewState extends State<SignUpView> {
     TextEditingController usernameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+
+    var formKey = GlobalKey<FormState>();
     // final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: PrimaryColor,
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 15,
-              ),
-              Image.asset(
-                AppImages.logo_img,
-                width: 130,
-                height: 130,
-                fit: BoxFit.cover,
-              ),
-              const CustomText(
-                text: 'FoodNinja',
-                fontFamily: 'Bold',
-                color: Colors.green,
-                fontsize: 30,
-              ),
-              const CustomText(
-                text: 'Deliver Favorite Food',
-                fontFamily: 'Light',
-                color: Colors.white,
-                fontsize: 16,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const CustomText(
-                text: 'Sign Up For Free',
-                color: Colors.white,
-                fontFamily: 'Light',
-                fontsize: 30,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  controller: usernameController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      hintText: "User name",
-                      filled: true,
-                      fillColor: textFieldColor,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 15,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  controller: emailController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      hintText: "Email",
-                      filled: true,
-                      fillColor: textFieldColor,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )),
+                Image.asset(
+                  AppImages.logo_img,
+                  width: 130,
+                  height: 130,
+                  fit: BoxFit.cover,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Obx(
-                () => Padding(
+                const CustomText(
+                  text: 'FoodNinja',
+                  fontFamily: 'Bold',
+                  color: Colors.green,
+                  fontsize: 30,
+                ),
+                const CustomText(
+                  text: 'Deliver Favorite Food',
+                  fontFamily: 'Light',
+                  color: Colors.white,
+                  fontsize: 16,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CustomText(
+                  text: 'Sign Up For Free',
+                  color: Colors.white,
+                  fontFamily: 'Light',
+                  fontsize: 30,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextField(
-                    controller: passwordController,
+                  child: TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter user name";
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: usernameController,
                     style: const TextStyle(color: Colors.white),
-                    obscureText: loginController.ispasswordVisible.value,
                     decoration: InputDecoration(
-                        hintText: "Password",
+                        hintText: "User name",
                         filled: true,
                         fillColor: textFieldColor,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
-                        ),
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              loginController.ispasswordVisible(
-                                  !loginController.ispasswordVisible.value);
-                            },
-                            icon: Icon(loginController.ispasswordVisible.isTrue
-                                ? Icons.visibility
-                                : Icons.visibility_off))),
+                        )),
                   ),
                 ),
-              ),
-              Row(
-                children: [
-                  Obx(
-                    () => Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: InkWell(
-                        onTap: () {
-                          loginController.isKeepMeSignInEnabled(
-                              !loginController.isKeepMeSignInEnabled.value);
-                        },
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: greenColor),
-                              color:
-                                  loginController.isKeepMeSignInEnabled.isTrue
-                                      ? greenColor
-                                      : Colors.transparent,
-                              borderRadius: BorderRadius.circular(30)),
-                          child: loginController.isKeepMeSignInEnabled.isTrue
-                              ? const Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                )
-                              : Container(),
+                const SizedBox(
+                  height: 5,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter email";
+                      } else if (value.isEmail == false) {  //also write (!value.isEmail)
+                        return "Enter valid Email id ";
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: emailController,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                        hintText: "Email",
+                        filled: true,
+                        fillColor: textFieldColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        )),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Obx(
+                  () => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter password";
+                      } else if (value.length < 8) {  
+                        return "Enter a Strong Password ";
+                      } else {
+                        return null;
+                      }
+                    },
+                      controller: passwordController,
+                      style: const TextStyle(color: Colors.white),
+                      obscureText: loginController.ispasswordVisible.value,
+                      decoration: InputDecoration(
+                          hintText: "Password",
+                          filled: true,
+                          fillColor: textFieldColor,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                loginController.ispasswordVisible(
+                                    !loginController.ispasswordVisible.value);
+                              },
+                              icon: Icon(
+                                  loginController.ispasswordVisible.isTrue
+                                      ? Icons.visibility
+                                      : Icons.visibility_off))),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Obx(
+                      () => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        child: InkWell(
+                          onTap: () {
+                            loginController.isKeepMeSignInEnabled(
+                                !loginController.isKeepMeSignInEnabled.value);
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: greenColor),
+                                color:
+                                    loginController.isKeepMeSignInEnabled.isTrue
+                                        ? greenColor
+                                        : Colors.transparent,
+                                borderRadius: BorderRadius.circular(30)),
+                            child: loginController.isKeepMeSignInEnabled.isTrue
+                                ? const Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                  )
+                                : Container(),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const CustomText(
-                    text: "Keep me sign in",
-                    color: Colors.white,
-                    fontFamily: 'Regular',
-                    fontsize: 16,
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Obx(
-                    () => Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: InkWell(
-                        onTap: () {
-                          loginController.isEmailAbountPricing(
-                              !loginController.isEmailAbountPricing.value);
-                        },
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: greenColor),
-                              color: loginController.isEmailAbountPricing.isTrue
-                                  ? greenColor
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(30)),
-                          child: loginController.isEmailAbountPricing.isTrue
-                              ? const Icon(
-                                  Icons.check,
-                                  color: Colors.white,
-                                )
-                              : Container(),
+                    const CustomText(
+                      text: "Keep me sign in",
+                      color: Colors.white,
+                      fontFamily: 'Regular',
+                      fontsize: 16,
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Obx(
+                      () => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        child: InkWell(
+                          onTap: () {
+                            loginController.isEmailAbountPricing(
+                                !loginController.isEmailAbountPricing.value);
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: greenColor),
+                                color:
+                                    loginController.isEmailAbountPricing.isTrue
+                                        ? greenColor
+                                        : Colors.transparent,
+                                borderRadius: BorderRadius.circular(30)),
+                            child: loginController.isEmailAbountPricing.isTrue
+                                ? const Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                  )
+                                : Container(),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const CustomText(
-                    text: "Email Me abount special pricing",
-                    color: Colors.white,
-                    fontFamily: 'Regular',
-                    fontsize: 16,
-                  )
-                ],
-              )
-            ],
+                    const CustomText(
+                      text: "Email Me abount special pricing",
+                      color: Colors.white,
+                      fontFamily: 'Regular',
+                      fontsize: 16,
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -216,9 +251,7 @@ class _SignUpViewState extends State<SignUpView> {
                 onTap: () {
                   // create account function
 
-                  if (usernameController.text.isNotEmpty &&
-                      emailController.text.isNotEmpty &&
-                      passwordController.text.isNotEmpty) {
+                  if (formKey.currentState!.validate()) {
                     loginController.createAccount(
                         email: emailController.text,
                         password: passwordController.text,

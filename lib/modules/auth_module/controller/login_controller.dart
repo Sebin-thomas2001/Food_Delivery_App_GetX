@@ -4,16 +4,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  RxBool ispasswordVisible = false.obs;
+  RxBool ispasswordVisible = true.obs;
 
   RxBool isKeepMeSignInEnabled = true.obs;
   RxBool isEmailAbountPricing = true.obs;
+
+  RxBool isLoading = false.obs;
 
   Future<void> createAccount({
     required String email,
     required String password,
     required String username,
   }) async {
+    isLoading(true);
     try {
       // Create user with email and password
       final credential =
@@ -21,7 +24,7 @@ class LoginController extends GetxController {
         email: email,
         password: password,
       );
-
+      isLoading(false);
       // Check if the account creation was successful
       if (credential.user != null) {
         log("User Created: ${credential.user!.uid}");
