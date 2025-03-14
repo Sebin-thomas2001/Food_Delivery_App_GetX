@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_cart/modules/auth_module/controller/login_controller.dart';
+import 'package:shop_cart/modules/kyc_module/views/create_bio_view.dart';
 import 'package:shop_cart/modules/onboarding/controller/onboarding_controller.dart';
 import 'package:shop_cart/modules/onboarding/views/splash_screen.dart';
 

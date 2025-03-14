@@ -26,7 +26,9 @@ class AppPrimaryButton extends StatelessWidget {
                   const LinearGradient(colors: [greenColor, lightgreenColor]),
               borderRadius: BorderRadius.circular(20)),
           child: Center(
-            child: isLoading ? CircularProgressIndicator() : CustomText(
+            child: isLoading ? const CircularProgressIndicator(
+              color: Colors.white,
+            ) : CustomText(
               text: buttonText,
               lineSpacing: 1,
               fontFamily: 'Bold',

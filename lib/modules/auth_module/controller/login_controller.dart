@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_cart/constants/app_colors.dart';
 import 'package:shop_cart/modules/kyc_module/views/create_bio_view.dart';
 
 class LoginController extends GetxController {
@@ -32,21 +34,33 @@ class LoginController extends GetxController {
         Get.off(CreateBioView());
       }
     } on FirebaseAuthException catch (e) {
+      isLoading(false);
       // Handle specific FirebaseAuthException codes
       if (e.code == 'weak-password') {
         log('The password provided is too weak.');
-        Get.snackbar("weak-password", 'Enter Strong Password.');
-      } else if (e.code == 'email-already-in-use') {
+        Get.snackbar(
+          "weak-password", 'Enter Strong Password.',
+          colorText: white,
+          backgroundColor: Red,
+          snackPosition: SnackPosition.BOTTOM,
+          );
+      } else if (e.code == 'Email already in use') {
         log('The account already exists for that email.');
-        Get.snackbar('email-already-in-use',
-            'The account already exists for that email.');
-      } else if (e.code == 'invalid-email') {
+        Get.snackbar(
+          'Email already in use',
+            'The account already exists for that email.',
+            colorText: white,
+           backgroundColor: Red,
+           snackPosition: SnackPosition.BOTTOM,
+           );
+      } else if (e.code == 'invalid email') {
         log('The email provided is not valid.');
       } else {
         // Log other FirebaseAuthExceptions that are not specifically handled
         log('Firebase Auth Error: ${e.code} - ${e.message}');
       }
     } catch (e) {
+      isLoading(false);
       // Log any other exceptions that are not FirebaseAuthException
       log('Error creating account: ${e.toString()}');
     }
