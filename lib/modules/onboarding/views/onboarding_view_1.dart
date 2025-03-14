@@ -1,9 +1,7 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_cart/common/buttons/app_primary_button.dart';
-import 'package:shop_cart/constants/app_images.dart';
 import 'package:shop_cart/modules/auth_module/views/login_view.dart';
 import 'package:shop_cart/modules/onboarding/controller/onboarding_controller.dart';
 import 'package:shop_cart/modules/onboarding/widgets/custom_text.dart';
@@ -21,7 +19,7 @@ class _OnboardingView1State extends State<OnboardingView1> {
   var onboardingController = Get.find<OnboardingController>();
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    // final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: PrimaryColor,

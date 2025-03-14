@@ -21,9 +21,9 @@ class _SignUpViewState extends State<SignUpView> {
   Widget build(BuildContext context) {
     final loginController = Get.find<LoginController>();
 
-    var usernameController = TextEditingController();
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
+    TextEditingController usernameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     // final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
