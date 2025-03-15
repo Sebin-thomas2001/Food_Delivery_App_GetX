@@ -10,3 +10,4 @@ const Color textFieldColor = Color(0xff252525);
 
 const Color secondaryButtonColor = Color(0xFFFF9012);
 const Color backArrowIconColor = Color(0xFFDA6317);
+const Color textFieldColor1 = Color(0xff3a3a3a);
