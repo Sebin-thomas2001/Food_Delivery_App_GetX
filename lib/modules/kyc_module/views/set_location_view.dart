@@ -60,68 +60,73 @@ class SetLocationView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(30),
               child: Center(
-                child:GestureDetector(
-                  onTap: (){},
-                  child: Container(
-                    height: 150,
-                    width: size.width,
-                    decoration: BoxDecoration(
+                  child: GestureDetector(
+                onTap: () {
+                  kycController.fetchLocation();
+                },
+                child: Container(
+                  height: 150,
+                  width: size.width,
+                  decoration: BoxDecoration(
                       color: textFieldColor,
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Column(
-                      
-                      children:  [
-                        Center(
-                          child: Container(
-                            
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                              child: Row(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Obx(
+                              () => Row(
                                 children: [
-                                  Image.asset(AppImages.location_img,
-                                  height: 40,
-                                  width: 40,
-                                  fit: BoxFit.cover,
+                                  Image.asset(
+                                    AppImages.location_img,
+                                    height: 40,
+                                    width: 40,
+                                    fit: BoxFit.cover,
                                   ),
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  const CustomText(text: "Your Location",
-                                  fontsize: 25,
-                                  fontFamily: 'Light',
-                                  color: Colors.white,
+                                  CustomText(
+                                    text: kycController.locationName.value ==
+                                            "null"
+                                        ? "Your Location"
+                                        : kycController.locationName.value,
+                                    
+                                    fontFamily: 'Light',
+                                    color: Colors.white,
                                   )
                                 ],
                               ),
                             ),
                           ),
                         ),
+                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 30),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 30),
                         child: Container(
                           height: 50,
                           width: size.width,
                           decoration: BoxDecoration(
-                        color: textFieldColor1,
-                        borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: const Center(
-                          child:  CustomText(text: 
-                          "Set Location",
-                          fontFamily: 'Regular',
-                          fontsize: 20,
-                          color: Colors.white,
+                              color: textFieldColor1,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: const Center(
+                            child: CustomText(
+                              text: "Set Location",
+                              fontFamily: 'Regular',
+                              fontsize: 20,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                        ),
                       )
-                      ],
-                    ),
+                    ],
                   ),
-                ) 
-                           
-              ),
+                ),
+              )),
             )
           ],
         ),
@@ -133,11 +138,12 @@ class SetLocationView extends StatelessWidget {
               onTap: () {
                 if (kycController.profileImagePath != "null") {
                 } else {
-                  Get.snackbar("Select Profile image ", "Try again",
-                  colorText: white,
-                  backgroundColor: Red,
-                  snackPosition: SnackPosition.BOTTOM,
-                  
+                  Get.snackbar(
+                    "Select Profile image ",
+                    "Try again",
+                    colorText: white,
+                    backgroundColor: Red,
+                    snackPosition: SnackPosition.BOTTOM,
                   );
                 }
               },
