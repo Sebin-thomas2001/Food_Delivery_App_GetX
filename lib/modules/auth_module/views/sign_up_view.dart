@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:shop_cart/common/buttons/app_primary_button.dart';
 import 'package:shop_cart/constants/app_colors.dart';
 import 'package:shop_cart/constants/app_images.dart';
-import 'package:shop_cart/modules/auth_module/controller/login_controller.dart';
+import 'package:shop_cart/modules/auth_module/controller/auth_controller.dart';
 import 'package:shop_cart/modules/auth_module/views/login_view.dart';
 import 'package:shop_cart/modules/onboarding/widgets/custom_text.dart';
 
@@ -19,7 +19,7 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
-    final loginController = Get.find<LoginController>();
+    final loginController = Get.find<AuthController>();
 
     TextEditingController usernameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
