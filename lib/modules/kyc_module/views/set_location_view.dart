@@ -1,12 +1,11 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_cart/constants/app_colors.dart';
 import 'package:shop_cart/constants/app_images.dart';
 import 'package:shop_cart/modules/kyc_module/controller/kyc_controller.dart';
+import 'package:shop_cart/modules/kyc_module/views/profile_updated_sucess.dart';
 import 'package:shop_cart/modules/onboarding/widgets/custom_text.dart';
 
 import '../../../common/buttons/app_primary_button.dart';
@@ -94,7 +93,6 @@ class SetLocationView extends StatelessWidget {
                                             "null"
                                         ? "Your Location"
                                         : kycController.locationName.value,
-                                    
                                     fontFamily: 'Light',
                                     color: Colors.white,
                                   )
@@ -136,10 +134,11 @@ class SetLocationView extends StatelessWidget {
             child: AppPrimaryButton(
               buttonText: "Next",
               onTap: () {
-                if (kycController.profileImagePath != "null") {
+                if (kycController.locationName != "null") {
+                  Get.to(() => ProfileUpdatedSucess());
                 } else {
                   Get.snackbar(
-                    "Select Profile image ",
+                    "Add Location to continue ",
                     "Try again",
                     colorText: white,
                     backgroundColor: Red,

@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_cart/modules/auth_module/controller/auth_controller.dart';
 import 'package:shop_cart/modules/kyc_module/controller/kyc_controller.dart';
-import 'package:shop_cart/modules/kyc_module/views/create_bio_view.dart';
+import 'package:shop_cart/modules/kyc_module/views/profile_updated_sucess.dart';
 import 'package:shop_cart/modules/kyc_module/views/set_location_view.dart';
-import 'package:shop_cart/modules/kyc_module/views/upload_your_photo.dart';
 import 'package:shop_cart/modules/onboarding/controller/onboarding_controller.dart';
-import 'package:shop_cart/modules/onboarding/views/splash_screen.dart';
 
 const FirebaseOptions firebaseOptions = FirebaseOptions(
     apiKey: "AIzaSyCAU8Y-zuBCPkWUv1XByCrgZSheRY43wwk",
@@ -41,6 +39,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home:  SetLocationView());
+        home:  ProfileUpdatedSucess());
   }
 }

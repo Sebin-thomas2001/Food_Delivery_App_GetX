@@ -1,3 +1,6 @@
+
+
+// import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -55,9 +58,12 @@ class KycController extends GetxController {
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
-      locationName(
-          'Latitude: ${position.latitude}, Longitude: ${position.longitude}');
-      
+
+      // List<geocoding.Placemark> placemarks = await geocoding
+      //     .placemarkFromCoordinates(position.latitude, position.longitude);
+
+      locationName("Longitude ${position.longitude}, Latitude ${position.latitude}");
+
       // Here you can return or use the position data as needed
     } catch (e) {
       print('Error fetching location: $e');

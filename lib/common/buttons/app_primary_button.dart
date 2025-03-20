@@ -14,7 +14,7 @@ class AppPrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 100),
       child: GestureDetector(
         onTap: onTap,
         child: Container(

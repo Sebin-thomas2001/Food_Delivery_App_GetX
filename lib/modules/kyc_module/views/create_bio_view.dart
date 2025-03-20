@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,7 @@ import 'package:shop_cart/modules/kyc_module/views/upload_your_photo.dart';
 import 'package:shop_cart/modules/onboarding/widgets/custom_text.dart';
 
 import '../../../common/buttons/app_primary_button.dart';
-import '../../../constants/app_images.dart';
+
 
 class CreateBioView extends StatefulWidget {
   CreateBioView({super.key});

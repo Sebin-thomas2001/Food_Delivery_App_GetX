@@ -7,4 +7,5 @@ class AppImages {
   static const String camera_img = "images/camera.png";
   static const String gallery_img = "images/gallery.png";
   static const String location_img = "images/location.png";
+  static const String check_img = "images/check.png";
 }

@@ -1,11 +1,9 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:shop_cart/constants/app_colors.dart';
-import 'package:shop_cart/modules/auth_module/views/login_view.dart';
 import 'package:shop_cart/modules/kyc_module/views/create_bio_view.dart';
 import 'package:shop_cart/modules/onboarding/views/onboarding_view_1.dart';
 

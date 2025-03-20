@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:shop_cart/constants/app_colors.dart';
 import 'package:shop_cart/constants/app_images.dart';
 import 'package:shop_cart/modules/auth_module/controller/auth_controller.dart';
-import 'package:shop_cart/modules/onboarding/views/onboarding_view_1.dart';
 import 'package:shop_cart/modules/onboarding/widgets/custom_text.dart';
 
 class SplashScreen extends StatefulWidget {
