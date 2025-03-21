@@ -10,6 +10,10 @@ class KycController extends GetxController {
 
   RxString locationName = "null".obs;
 
+  String? firstName;
+  String? lastName;
+  String? mobileNumber;
+
   pickImageFromGallery() async {
     final ImagePicker picker = ImagePicker();
     // Pick an image.
@@ -74,6 +78,12 @@ class KycController extends GetxController {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   storeKycDetails() {
-    users.add({});
+    users.add({
+      'first_name': firstName,
+      'last_name':lastName,
+      'mobile_number':mobileNumber,
+      'location_name':locationName.value,
+      'profile_image':profileImagePath.value
+      });
   }
 }
